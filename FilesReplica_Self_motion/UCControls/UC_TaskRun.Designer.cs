@@ -30,15 +30,15 @@ namespace FilesReplica_Self_motion.UCControls
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.treeView_Yun = new System.Windows.Forms.TreeView();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.treeView_MB = new System.Windows.Forms.TreeView();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.treeView_Yun = new System.Windows.Forms.TreeView();
-            this.treeView_MB = new System.Windows.Forms.TreeView();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -49,9 +49,19 @@ namespace FilesReplica_Self_motion.UCControls
             this.panel1.Location = new System.Drawing.Point(6, 52);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
+            this.panel1.Padding = new System.Windows.Forms.Padding(1);
             this.panel1.Size = new System.Drawing.Size(385, 360);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // treeView_Yun
+            // 
+            this.treeView_Yun.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.treeView_Yun.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeView_Yun.Location = new System.Drawing.Point(1, 1);
+            this.treeView_Yun.Name = "treeView_Yun";
+            this.treeView_Yun.Size = new System.Drawing.Size(383, 358);
+            this.treeView_Yun.TabIndex = 0;
             // 
             // panel2
             // 
@@ -59,9 +69,19 @@ namespace FilesReplica_Self_motion.UCControls
             this.panel2.Location = new System.Drawing.Point(427, 52);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel2.Name = "panel2";
+            this.panel2.Padding = new System.Windows.Forms.Padding(1);
             this.panel2.Size = new System.Drawing.Size(420, 360);
             this.panel2.TabIndex = 1;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            // 
+            // treeView_MB
+            // 
+            this.treeView_MB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.treeView_MB.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeView_MB.Location = new System.Drawing.Point(1, 1);
+            this.treeView_MB.Name = "treeView_MB";
+            this.treeView_MB.Size = new System.Drawing.Size(418, 358);
+            this.treeView_MB.TabIndex = 1;
             // 
             // button2
             // 
@@ -132,22 +152,6 @@ namespace FilesReplica_Self_motion.UCControls
             this.label2.Size = new System.Drawing.Size(65, 20);
             this.label2.TabIndex = 14;
             this.label2.Text = "目标目录";
-            // 
-            // treeView_Yun
-            // 
-            this.treeView_Yun.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeView_Yun.Location = new System.Drawing.Point(0, 0);
-            this.treeView_Yun.Name = "treeView_Yun";
-            this.treeView_Yun.Size = new System.Drawing.Size(385, 360);
-            this.treeView_Yun.TabIndex = 0;
-            // 
-            // treeView_MB
-            // 
-            this.treeView_MB.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeView_MB.Location = new System.Drawing.Point(0, 0);
-            this.treeView_MB.Name = "treeView_MB";
-            this.treeView_MB.Size = new System.Drawing.Size(420, 360);
-            this.treeView_MB.TabIndex = 1;
             // 
             // UC_TaskRun
             // 

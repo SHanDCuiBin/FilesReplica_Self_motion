@@ -37,6 +37,7 @@ namespace FilesReplica_Self_motion
             // 
             this.uC_TaskRun1.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.uC_TaskRun1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uC_TaskRun1.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.uC_TaskRun1.Location = new System.Drawing.Point(0, 0);
             this.uC_TaskRun1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.uC_TaskRun1.Name = "uC_TaskRun1";
@@ -51,6 +52,7 @@ namespace FilesReplica_Self_motion
             this.ClientSize = new System.Drawing.Size(853, 470);
             this.Controls.Add(this.uC_TaskRun1);
             this.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
