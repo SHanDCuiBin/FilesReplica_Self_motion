@@ -22,6 +22,9 @@
     <Reference Include="System.Management">
       <HintPath>Lib\System.Management.dll</HintPath>
     </Reference>
+    <Reference Include="WinShell">
+      <HintPath>Lib\WinShell.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>

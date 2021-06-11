@@ -4,21 +4,19 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WinShell;
 
 namespace FilesReplica_Self_motion.UCControls
 {
     public partial class UC_TaskRun : UserControl
     {
-        /// <summary>
-        /// 定义初始的全局变量
-        /// </summary>
-        string yuan_explorerPath = "";
-        string yuan_treeViewPath = "";
-        string mb_explorerPath = "";
-        string mb_treeViewPath = "";
+        private IShellFolder iDeskTop;
+        private static IntPtr m_ipSmallSystemImageList;
+        private static IntPtr m_ipLargeSystemImageList;
 
 
         public UC_TaskRun()
@@ -109,6 +107,38 @@ namespace FilesReplica_Self_motion.UCControls
         private void backLoad_DoWork(object sender, DoWorkEventArgs e)
         {
 
+        }
+
+        private void UC_TaskRun_Load(object sender, EventArgs e)
+        {
+            //获取系统 ImageList
+            SHFILEINFO shfi = new SHFILEINFO();
+
+            m_ipSmallSystemImageList = API.SHGetFileInfo("", 0, out shfi, Marshal.SizeOf(typeof(SHFILEINFO)),
+                SHGFI.SYSICONINDEX | SHGFI.SMALLICON | SHGFI.USEFILEATTRIBUTES);
+
+            m_ipLargeSystemImageList = API.SHGetFileInfo("", 0, out shfi, Marshal.SizeOf(typeof(SHFILEINFO)),
+                SHGFI.SYSICONINDEX | SHGFI.LARGEICON | SHGFI.USEFILEATTRIBUTES);
+
+            //把系统 ImageList 关联到 TreeView 和 ListView
+            API.SendMessage(treeView_Yun.Handle, API.TVM_SETIMAGELIST, API.TVSIL_NORMAL, m_ipSmallSystemImageList);
+           // API.SendMessage(lvFile.Handle, API.LVM_SETIMAGELIST, API.LVSIL_NORMAL, m_ipLargeSystemImageList);
+
+            //获得桌面 PIDL
+            IntPtr deskTopPtr;
+            iDeskTop = API.GetDesktopFolder(out deskTopPtr);
+            API.SHGetSpecialFolderLocation(IntPtr.Zero, CSIDL.DESKTOP, out deskTopPtr);
+
+            //添加 桌面 节点
+            int imgIndex = API.GetSmallIconIndex(deskTopPtr);
+            TreeNode tnDesktop = new TreeNode("桌面", imgIndex, imgIndex);
+            tnDesktop.Tag = new ShellItem(deskTopPtr, iDeskTop);
+            tnDesktop.Nodes.Add("...");
+
+            //把节点添加到树中
+            treeView_Yun.Nodes.Add(tnDesktop);
+            treeView_Yun.SelectedNode = tnDesktop;
+            tnDesktop.Expand();
         }
     }
 }

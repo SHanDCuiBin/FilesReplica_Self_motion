@@ -44,6 +44,8 @@ namespace FilesReplica_Self_motion.UCControls
             this.btn_Yuan_LL = new System.Windows.Forms.Button();
             this.btn_mb_LL = new System.Windows.Forms.Button();
             this.backLoad = new System.ComponentModel.BackgroundWorker();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -204,11 +206,31 @@ namespace FilesReplica_Self_motion.UCControls
             // 
             this.backLoad.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backLoad_DoWork);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 401);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(93, 20);
+            this.label3.TabIndex = 18;
+            this.label3.Text = "源文件总数：";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(430, 402);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(107, 20);
+            this.label4.TabIndex = 19;
+            this.label4.Text = "目标文件总数：";
+            // 
             // UC_TaskRun
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.btn_mb_LL);
             this.Controls.Add(this.btn_Yuan_LL);
             this.Controls.Add(this.txt_mbFilePath);
@@ -223,6 +245,7 @@ namespace FilesReplica_Self_motion.UCControls
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "UC_TaskRun";
             this.Size = new System.Drawing.Size(853, 470);
+            this.Load += new System.EventHandler(this.UC_TaskRun_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -247,5 +270,7 @@ namespace FilesReplica_Self_motion.UCControls
         private System.Windows.Forms.Button btn_mb_LL;
         private System.Windows.Forms.TextBox txt_mbFilePath;
         private System.ComponentModel.BackgroundWorker backLoad;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }
