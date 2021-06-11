@@ -16,7 +16,7 @@ namespace FilesReplica_Self_motion.UCControls
         /// 定义初始的全局变量
         /// </summary>
         string yuan_explorerPath = "";
-        string yuan_treeViewPath = "";        
+        string yuan_treeViewPath = "";
         string mb_explorerPath = "";
         string mb_treeViewPath = "";
 
@@ -65,5 +65,50 @@ namespace FilesReplica_Self_motion.UCControls
         }
         #endregion
 
+
+        /// <summary>
+        /// 定时任务
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// 选择 源 文件夹
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btn_Yuan_LL_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog dialog = new FolderBrowserDialog();
+            dialog.Description = "请选择文件路径";
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                txt_yuanFilePath.Text = dialog.SelectedPath;
+            }
+        }
+
+        /// <summary>
+        /// 选择 目标 文件夹
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btn_mb_LL_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog dialog = new FolderBrowserDialog();
+            dialog.Description = "请选择文件路径";
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                txt_mbFilePath.Text = dialog.SelectedPath;
+            }
+        }
+
+        private void backLoad_DoWork(object sender, DoWorkEventArgs e)
+        {
+
+        }
     }
 }
