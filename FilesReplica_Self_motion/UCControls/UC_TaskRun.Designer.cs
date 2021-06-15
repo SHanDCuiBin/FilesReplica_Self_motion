@@ -31,100 +31,113 @@ namespace FilesReplica_Self_motion.UCControls
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.treeView_Yun = new System.Windows.Forms.TreeView();
+            this.listView_Yuan = new System.Windows.Forms.ListView();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.treeView_MB = new System.Windows.Forms.TreeView();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.listView_mb = new System.Windows.Forms.ListView();
+            this.btn_Reset = new System.Windows.Forms.Button();
+            this.btn_Stop = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txt_yuanFilePath = new System.Windows.Forms.TextBox();
             this.txt_mbFilePath = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timer = new System.Windows.Forms.Timer(this.components);
             this.btn_Yuan_LL = new System.Windows.Forms.Button();
             this.btn_mb_LL = new System.Windows.Forms.Button();
             this.backLoad = new System.ComponentModel.BackgroundWorker();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.label7 = new System.Windows.Forms.Label();
+            this.labMessage = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.treeView_Yun);
+            this.panel1.Controls.Add(this.listView_Yuan);
             this.panel1.Location = new System.Drawing.Point(6, 37);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(1);
-            this.panel1.Size = new System.Drawing.Size(385, 362);
+            this.panel1.Size = new System.Drawing.Size(395, 372);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-            // treeView_Yun
+            // listView_Yuan
             // 
-            this.treeView_Yun.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.treeView_Yun.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeView_Yun.Location = new System.Drawing.Point(1, 1);
-            this.treeView_Yun.Name = "treeView_Yun";
-            this.treeView_Yun.Size = new System.Drawing.Size(383, 360);
-            this.treeView_Yun.TabIndex = 0;
+            this.listView_Yuan.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listView_Yuan.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listView_Yuan.HideSelection = false;
+            this.listView_Yuan.Location = new System.Drawing.Point(1, 1);
+            this.listView_Yuan.Name = "listView_Yuan";
+            this.listView_Yuan.Size = new System.Drawing.Size(393, 370);
+            this.listView_Yuan.TabIndex = 0;
+            this.listView_Yuan.UseCompatibleStateImageBehavior = false;
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.treeView_MB);
-            this.panel2.Location = new System.Drawing.Point(427, 38);
+            this.panel2.Controls.Add(this.listView_mb);
+            this.panel2.Location = new System.Drawing.Point(452, 38);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(1);
-            this.panel2.Size = new System.Drawing.Size(420, 361);
+            this.panel2.Size = new System.Drawing.Size(395, 372);
             this.panel2.TabIndex = 1;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
-            // treeView_MB
+            // listView_mb
             // 
-            this.treeView_MB.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.treeView_MB.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeView_MB.Location = new System.Drawing.Point(1, 1);
-            this.treeView_MB.Name = "treeView_MB";
-            this.treeView_MB.Size = new System.Drawing.Size(418, 359);
-            this.treeView_MB.TabIndex = 1;
+            this.listView_mb.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listView_mb.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listView_mb.HideSelection = false;
+            this.listView_mb.Location = new System.Drawing.Point(1, 1);
+            this.listView_mb.Name = "listView_mb";
+            this.listView_mb.Size = new System.Drawing.Size(393, 370);
+            this.listView_mb.TabIndex = 1;
+            this.listView_mb.UseCompatibleStateImageBehavior = false;
             // 
-            // button2
+            // btn_Reset
             // 
-            this.button2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button2.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SkyBlue;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button2.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.button2.Location = new System.Drawing.Point(689, 435);
-            this.button2.Margin = new System.Windows.Forms.Padding(6);
-            this.button2.Name = "button2";
-            this.button2.Padding = new System.Windows.Forms.Padding(2);
-            this.button2.Size = new System.Drawing.Size(70, 32);
-            this.button2.TabIndex = 10;
-            this.button2.Text = "保 存";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btn_Reset.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btn_Reset.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btn_Reset.FlatAppearance.BorderSize = 0;
+            this.btn_Reset.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SkyBlue;
+            this.btn_Reset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Reset.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_Reset.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btn_Reset.Location = new System.Drawing.Point(346, 438);
+            this.btn_Reset.Margin = new System.Windows.Forms.Padding(6);
+            this.btn_Reset.Name = "btn_Reset";
+            this.btn_Reset.Padding = new System.Windows.Forms.Padding(2);
+            this.btn_Reset.Size = new System.Drawing.Size(70, 30);
+            this.btn_Reset.TabIndex = 10;
+            this.btn_Reset.Text = "重 启";
+            this.btn_Reset.UseVisualStyleBackColor = false;
+            this.btn_Reset.Click += new System.EventHandler(this.btn_Reset_Click);
             // 
-            // button3
+            // btn_Stop
             // 
-            this.button3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button3.BackColor = System.Drawing.Color.LightGreen;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SkyBlue;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button3.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.button3.Location = new System.Drawing.Point(776, 435);
-            this.button3.Margin = new System.Windows.Forms.Padding(6);
-            this.button3.Name = "button3";
-            this.button3.Padding = new System.Windows.Forms.Padding(2);
-            this.button3.Size = new System.Drawing.Size(70, 32);
-            this.button3.TabIndex = 11;
-            this.button3.Text = "清 空";
-            this.button3.UseVisualStyleBackColor = false;
+            this.btn_Stop.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btn_Stop.BackColor = System.Drawing.Color.LightGreen;
+            this.btn_Stop.FlatAppearance.BorderSize = 0;
+            this.btn_Stop.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SkyBlue;
+            this.btn_Stop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Stop.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_Stop.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btn_Stop.Location = new System.Drawing.Point(433, 438);
+            this.btn_Stop.Margin = new System.Windows.Forms.Padding(6);
+            this.btn_Stop.Name = "btn_Stop";
+            this.btn_Stop.Padding = new System.Windows.Forms.Padding(2);
+            this.btn_Stop.Size = new System.Drawing.Size(70, 30);
+            this.btn_Stop.TabIndex = 11;
+            this.btn_Stop.Text = "暂 停";
+            this.btn_Stop.UseVisualStyleBackColor = false;
+            this.btn_Stop.Click += new System.EventHandler(this.btn_Stop_Click);
             // 
             // label1
             // 
@@ -146,7 +159,7 @@ namespace FilesReplica_Self_motion.UCControls
             // 
             // txt_mbFilePath
             // 
-            this.txt_mbFilePath.Location = new System.Drawing.Point(489, 7);
+            this.txt_mbFilePath.Location = new System.Drawing.Point(493, 7);
             this.txt_mbFilePath.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_mbFilePath.Name = "txt_mbFilePath";
             this.txt_mbFilePath.ReadOnly = true;
@@ -156,15 +169,15 @@ namespace FilesReplica_Self_motion.UCControls
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(421, 9);
+            this.label2.Location = new System.Drawing.Point(425, 9);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(65, 20);
             this.label2.TabIndex = 14;
             this.label2.Text = "目标目录";
             // 
-            // timer1
+            // timer
             // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.timer.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // btn_Yuan_LL
             // 
@@ -175,7 +188,7 @@ namespace FilesReplica_Self_motion.UCControls
             this.btn_Yuan_LL.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Yuan_LL.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btn_Yuan_LL.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btn_Yuan_LL.Location = new System.Drawing.Point(342, 5);
+            this.btn_Yuan_LL.Location = new System.Drawing.Point(343, 5);
             this.btn_Yuan_LL.Margin = new System.Windows.Forms.Padding(5);
             this.btn_Yuan_LL.Name = "btn_Yuan_LL";
             this.btn_Yuan_LL.Size = new System.Drawing.Size(69, 28);
@@ -187,7 +200,7 @@ namespace FilesReplica_Self_motion.UCControls
             // btn_mb_LL
             // 
             this.btn_mb_LL.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn_mb_LL.BackColor = System.Drawing.Color.Orange;
+            this.btn_mb_LL.BackColor = System.Drawing.Color.Coral;
             this.btn_mb_LL.FlatAppearance.BorderSize = 0;
             this.btn_mb_LL.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SkyBlue;
             this.btn_mb_LL.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -209,7 +222,7 @@ namespace FilesReplica_Self_motion.UCControls
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 401);
+            this.label3.Location = new System.Drawing.Point(8, 412);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(93, 20);
             this.label3.TabIndex = 18;
@@ -218,17 +231,84 @@ namespace FilesReplica_Self_motion.UCControls
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(430, 402);
+            this.label4.Location = new System.Drawing.Point(453, 413);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(107, 20);
             this.label4.TabIndex = 19;
             this.label4.Text = "目标文件总数：";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(77, 439);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(92, 28);
+            this.comboBox1.TabIndex = 20;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(7, 443);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(79, 20);
+            this.label5.TabIndex = 21;
+            this.label5.Text = "文件类型：";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(196, 443);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(51, 20);
+            this.label6.TabIndex = 22;
+            this.label6.Text = "频率：";
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(243, 441);
+            this.numericUpDown1.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(48, 25);
+            this.numericUpDown1.TabIndex = 23;
+            this.numericUpDown1.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(293, 443);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(37, 20);
+            this.label7.TabIndex = 24;
+            this.label7.Text = "S/次";
+            // 
+            // labMessage
+            // 
+            this.labMessage.AutoSize = true;
+            this.labMessage.Location = new System.Drawing.Point(591, 443);
+            this.labMessage.Name = "labMessage";
+            this.labMessage.Size = new System.Drawing.Size(107, 20);
+            this.labMessage.TabIndex = 25;
+            this.labMessage.Text = "正在执行。。。";
             // 
             // UC_TaskRun
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.Controls.Add(this.labMessage);
+            this.Controls.Add(this.numericUpDown1);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btn_mb_LL);
@@ -237,8 +317,8 @@ namespace FilesReplica_Self_motion.UCControls
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txt_yuanFilePath);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.btn_Reset);
+            this.Controls.Add(this.btn_Stop);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -248,6 +328,7 @@ namespace FilesReplica_Self_motion.UCControls
             this.Load += new System.EventHandler(this.UC_TaskRun_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -257,20 +338,26 @@ namespace FilesReplica_Self_motion.UCControls
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btn_Reset;
+        private System.Windows.Forms.Button btn_Stop;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txt_yuanFilePath;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TreeView treeView_Yun;
-        private System.Windows.Forms.TreeView treeView_MB;
-        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.Button btn_Yuan_LL;
         private System.Windows.Forms.Button btn_mb_LL;
         private System.Windows.Forms.TextBox txt_mbFilePath;
         private System.ComponentModel.BackgroundWorker backLoad;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ListView listView_Yuan;
+        private System.Windows.Forms.ListView listView_mb;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label labMessage;
     }
 }

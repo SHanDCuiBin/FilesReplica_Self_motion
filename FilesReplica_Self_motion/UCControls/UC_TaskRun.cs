@@ -15,7 +15,6 @@ namespace FilesReplica_Self_motion.UCControls
     public partial class UC_TaskRun : UserControl
     {
         private IShellFolder iDeskTop;
-        private static IntPtr m_ipSmallSystemImageList;
         private static IntPtr m_ipLargeSystemImageList;
 
 
@@ -86,6 +85,9 @@ namespace FilesReplica_Self_motion.UCControls
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 txt_yuanFilePath.Text = dialog.SelectedPath;
+
+                ShellItem ShellItem = GetShellItemByPath(txt_yuanFilePath.Text);
+                FillListView(ShellItem, listView_Yuan);
             }
         }
 
@@ -101,6 +103,9 @@ namespace FilesReplica_Self_motion.UCControls
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 txt_mbFilePath.Text = dialog.SelectedPath;
+
+                ShellItem ShellItem = GetShellItemByPath(txt_mbFilePath.Text);
+                FillListView(ShellItem, listView_mb);
             }
         }
 
@@ -109,36 +114,116 @@ namespace FilesReplica_Self_motion.UCControls
 
         }
 
+        /// <summary>
+        /// 程序加载
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void UC_TaskRun_Load(object sender, EventArgs e)
         {
             //获取系统 ImageList
             SHFILEINFO shfi = new SHFILEINFO();
-
-            m_ipSmallSystemImageList = API.SHGetFileInfo("", 0, out shfi, Marshal.SizeOf(typeof(SHFILEINFO)),
-                SHGFI.SYSICONINDEX | SHGFI.SMALLICON | SHGFI.USEFILEATTRIBUTES);
-
             m_ipLargeSystemImageList = API.SHGetFileInfo("", 0, out shfi, Marshal.SizeOf(typeof(SHFILEINFO)),
                 SHGFI.SYSICONINDEX | SHGFI.LARGEICON | SHGFI.USEFILEATTRIBUTES);
 
-            //把系统 ImageList 关联到 TreeView 和 ListView
-            API.SendMessage(treeView_Yun.Handle, API.TVM_SETIMAGELIST, API.TVSIL_NORMAL, m_ipSmallSystemImageList);
-           // API.SendMessage(lvFile.Handle, API.LVM_SETIMAGELIST, API.LVSIL_NORMAL, m_ipLargeSystemImageList);
+            API.SendMessage(listView_Yuan.Handle, API.LVM_SETIMAGELIST, API.LVSIL_NORMAL, m_ipLargeSystemImageList);
+            API.SendMessage(listView_mb.Handle, API.LVM_SETIMAGELIST, API.LVSIL_NORMAL, m_ipLargeSystemImageList);
 
             //获得桌面 PIDL
             IntPtr deskTopPtr;
             iDeskTop = API.GetDesktopFolder(out deskTopPtr);
             API.SHGetSpecialFolderLocation(IntPtr.Zero, CSIDL.DESKTOP, out deskTopPtr);
 
-            //添加 桌面 节点
-            int imgIndex = API.GetSmallIconIndex(deskTopPtr);
-            TreeNode tnDesktop = new TreeNode("桌面", imgIndex, imgIndex);
-            tnDesktop.Tag = new ShellItem(deskTopPtr, iDeskTop);
-            tnDesktop.Nodes.Add("...");
+            ShellItem sItem = new ShellItem(deskTopPtr, iDeskTop);
 
-            //把节点添加到树中
-            treeView_Yun.Nodes.Add(tnDesktop);
-            treeView_Yun.SelectedNode = tnDesktop;
-            tnDesktop.Expand();
+            FillListView(sItem, listView_Yuan);
+            FillListView(sItem, listView_mb);
+
+        }
+
+
+
+        private ShellItem GetShellItemByPath(string path)
+        {
+            IntPtr deskTopPtr;
+            iDeskTop = API.GetShellFolder(API.GetDesktopFolder(out deskTopPtr), path);
+            API.SHGetSpecialFolderLocation(IntPtr.Zero, CSIDL.DESKTOP, out deskTopPtr);
+            return new ShellItem(deskTopPtr, iDeskTop);
+        }
+
+        /// <summary>
+        /// 填充指定容器内容
+        /// </summary>
+        /// <param name="sItem"></param>
+        private void FillListView(ShellItem sItem, ListView lsView)
+        {
+            IShellFolder root = sItem.ShellFolder;
+
+            lsView.Items.Clear();
+
+            //循环查找子项
+            IEnumIDList Enum = null;
+            IntPtr EnumPtr = IntPtr.Zero;
+            IntPtr pidlSub;
+            int celtFetched;
+
+            if (root.EnumObjects(this.Handle, SHCONTF.FOLDERS | SHCONTF.INCLUDEHIDDEN, out EnumPtr) == API.S_OK)
+            {
+                Enum = (IEnumIDList)Marshal.GetObjectForIUnknown(EnumPtr);
+                while (Enum.Next(1, out pidlSub, out celtFetched) == 0 && celtFetched == API.S_FALSE)
+                {
+                    string name = API.GetNameByIShell(root, pidlSub);
+                    ShellItem shellItem = new ShellItem(pidlSub, null, sItem);
+
+                    ListViewItem item = new ListViewItem(name,
+                        API.GetLargeIconIndex(shellItem.PIDLFull.Ptr));
+                    item.Tag = shellItem;
+                    lsView.Items.Add(item);
+                }
+            }
+
+            if (root.EnumObjects(this.Handle, SHCONTF.NONFOLDERS | SHCONTF.INCLUDEHIDDEN, out EnumPtr) == API.S_OK)
+            {
+                Enum = (IEnumIDList)Marshal.GetObjectForIUnknown(EnumPtr);
+                while (Enum.Next(1, out pidlSub, out celtFetched) == 0 && celtFetched == API.S_FALSE)
+                {
+                    SFGAO attribs = SFGAO.FOLDER;
+                    root.GetAttributesOf(1, new IntPtr[] { pidlSub }, ref attribs);
+                    if ((attribs & SFGAO.FOLDER) == 0)
+                    {
+                        string name = API.GetNameByIShell(root, pidlSub);
+                        string path = API.GetPathByIShell(root, pidlSub);
+                        ShellItem shellItem = new ShellItem(pidlSub, null, sItem);
+
+                        ListViewItem item = new ListViewItem(name,
+                            API.GetLargeIconIndex(shellItem.PIDLFull.Ptr));
+                        item.Tag = shellItem;
+                        lsView.Items.Add(item);
+                    }
+                }
+            }
+
+            lsView.Sort();
+        }
+
+        /// <summary>
+        /// 【暂停】
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btn_Stop_Click(object sender, EventArgs e)
+        {
+            timer.Enabled = false;
+        }
+
+        /// <summary>
+        /// 【重启】
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btn_Reset_Click(object sender, EventArgs e)
+        {
+            timer.Enabled = true;
         }
     }
 }
