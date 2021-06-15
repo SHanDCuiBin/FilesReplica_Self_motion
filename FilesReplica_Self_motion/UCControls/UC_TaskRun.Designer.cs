@@ -44,17 +44,21 @@ namespace FilesReplica_Self_motion.UCControls
             this.btn_Yuan_LL = new System.Windows.Forms.Button();
             this.btn_mb_LL = new System.Windows.Forms.Button();
             this.backLoad = new System.ComponentModel.BackgroundWorker();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.lab_yuan_sum = new System.Windows.Forms.Label();
+            this.lab_mb_sum = new System.Windows.Forms.Label();
+            this.cboxFilesType = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.num_load_pl = new System.Windows.Forms.NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
             this.labMessage = new System.Windows.Forms.Label();
+            this.picBox_yuanTomb = new System.Windows.Forms.PictureBox();
+            this.picBox_mbToyuan = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num_load_pl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBox_yuanTomb)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBox_mbToyuan)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -116,7 +120,7 @@ namespace FilesReplica_Self_motion.UCControls
             this.btn_Reset.Padding = new System.Windows.Forms.Padding(2);
             this.btn_Reset.Size = new System.Drawing.Size(70, 30);
             this.btn_Reset.TabIndex = 10;
-            this.btn_Reset.Text = "重 启";
+            this.btn_Reset.Text = "开 始";
             this.btn_Reset.UseVisualStyleBackColor = false;
             this.btn_Reset.Click += new System.EventHandler(this.btn_Reset_Click);
             // 
@@ -218,32 +222,33 @@ namespace FilesReplica_Self_motion.UCControls
             // backLoad
             // 
             this.backLoad.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backLoad_DoWork);
+            this.backLoad.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backLoad_RunWorkerCompleted);
             // 
-            // label3
+            // lab_yuan_sum
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(8, 412);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(93, 20);
-            this.label3.TabIndex = 18;
-            this.label3.Text = "源文件总数：";
+            this.lab_yuan_sum.AutoSize = true;
+            this.lab_yuan_sum.Location = new System.Drawing.Point(8, 412);
+            this.lab_yuan_sum.Name = "lab_yuan_sum";
+            this.lab_yuan_sum.Size = new System.Drawing.Size(93, 20);
+            this.lab_yuan_sum.TabIndex = 18;
+            this.lab_yuan_sum.Text = "源文件总数：";
             // 
-            // label4
+            // lab_mb_sum
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(453, 413);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(107, 20);
-            this.label4.TabIndex = 19;
-            this.label4.Text = "目标文件总数：";
+            this.lab_mb_sum.AutoSize = true;
+            this.lab_mb_sum.Location = new System.Drawing.Point(453, 413);
+            this.lab_mb_sum.Name = "lab_mb_sum";
+            this.lab_mb_sum.Size = new System.Drawing.Size(107, 20);
+            this.lab_mb_sum.TabIndex = 19;
+            this.lab_mb_sum.Text = "目标文件总数：";
             // 
-            // comboBox1
+            // cboxFilesType
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(77, 439);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(92, 28);
-            this.comboBox1.TabIndex = 20;
+            this.cboxFilesType.FormattingEnabled = true;
+            this.cboxFilesType.Location = new System.Drawing.Point(77, 439);
+            this.cboxFilesType.Name = "cboxFilesType";
+            this.cboxFilesType.Size = new System.Drawing.Size(92, 28);
+            this.cboxFilesType.TabIndex = 20;
             // 
             // label5
             // 
@@ -263,19 +268,19 @@ namespace FilesReplica_Self_motion.UCControls
             this.label6.TabIndex = 22;
             this.label6.Text = "频率：";
             // 
-            // numericUpDown1
+            // num_load_pl
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(243, 441);
-            this.numericUpDown1.Minimum = new decimal(new int[] {
-            1,
+            this.num_load_pl.Location = new System.Drawing.Point(243, 441);
+            this.num_load_pl.Minimum = new decimal(new int[] {
+            5,
             0,
             0,
             0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(48, 25);
-            this.numericUpDown1.TabIndex = 23;
-            this.numericUpDown1.Value = new decimal(new int[] {
-            1,
+            this.num_load_pl.Name = "num_load_pl";
+            this.num_load_pl.Size = new System.Drawing.Size(48, 25);
+            this.num_load_pl.TabIndex = 23;
+            this.num_load_pl.Value = new decimal(new int[] {
+            5,
             0,
             0,
             0});
@@ -298,19 +303,43 @@ namespace FilesReplica_Self_motion.UCControls
             this.labMessage.TabIndex = 25;
             this.labMessage.Text = "正在执行。。。";
             // 
+            // picBox_yuanTomb
+            // 
+            this.picBox_yuanTomb.Image = global::FilesReplica_Self_motion.Resource.箭头_右_黑;
+            this.picBox_yuanTomb.Location = new System.Drawing.Point(403, 148);
+            this.picBox_yuanTomb.Name = "picBox_yuanTomb";
+            this.picBox_yuanTomb.Size = new System.Drawing.Size(47, 42);
+            this.picBox_yuanTomb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picBox_yuanTomb.TabIndex = 26;
+            this.picBox_yuanTomb.TabStop = false;
+            this.picBox_yuanTomb.Click += new System.EventHandler(this.picBox_yuanTomb_Click);
+            // 
+            // picBox_mbToyuan
+            // 
+            this.picBox_mbToyuan.Image = global::FilesReplica_Self_motion.Resource.箭头_左_黑;
+            this.picBox_mbToyuan.Location = new System.Drawing.Point(403, 214);
+            this.picBox_mbToyuan.Name = "picBox_mbToyuan";
+            this.picBox_mbToyuan.Size = new System.Drawing.Size(47, 42);
+            this.picBox_mbToyuan.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picBox_mbToyuan.TabIndex = 27;
+            this.picBox_mbToyuan.TabStop = false;
+            this.picBox_mbToyuan.Click += new System.EventHandler(this.picBox_mbToyuan_Click);
+            // 
             // UC_TaskRun
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.Controls.Add(this.picBox_mbToyuan);
+            this.Controls.Add(this.picBox_yuanTomb);
             this.Controls.Add(this.labMessage);
-            this.Controls.Add(this.numericUpDown1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.num_load_pl);
+            this.Controls.Add(this.cboxFilesType);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.lab_mb_sum);
+            this.Controls.Add(this.lab_yuan_sum);
             this.Controls.Add(this.btn_mb_LL);
             this.Controls.Add(this.btn_Yuan_LL);
             this.Controls.Add(this.txt_mbFilePath);
@@ -328,7 +357,9 @@ namespace FilesReplica_Self_motion.UCControls
             this.Load += new System.EventHandler(this.UC_TaskRun_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num_load_pl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBox_yuanTomb)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBox_mbToyuan)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -349,15 +380,17 @@ namespace FilesReplica_Self_motion.UCControls
         private System.Windows.Forms.Button btn_mb_LL;
         private System.Windows.Forms.TextBox txt_mbFilePath;
         private System.ComponentModel.BackgroundWorker backLoad;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lab_yuan_sum;
+        private System.Windows.Forms.Label lab_mb_sum;
         private System.Windows.Forms.ListView listView_Yuan;
         private System.Windows.Forms.ListView listView_mb;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cboxFilesType;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown num_load_pl;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label labMessage;
+        private System.Windows.Forms.PictureBox picBox_yuanTomb;
+        private System.Windows.Forms.PictureBox picBox_mbToyuan;
     }
 }
